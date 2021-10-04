@@ -504,37 +504,37 @@
     <div>
         <div class="">
             <label for="">Semesta</label>
-            <input type="text" name="" id="nilai-semesta" value="0">
+            <input type="text" name="" id="nilai-semesta" value="60">
         </div>
         <br>
         <div class="">
             <label for="">A</label>
-            <input type="text" name="" id="nilai-a" value="0">
+            <input type="text" name="" id="nilai-a" value="25">
         </div>
         <br>
         <div class="">
             <label for="">B</label>
-            <input type="text" name="" id="nilai-b" value="0">
+            <input type="text" name="" id="nilai-b" value="26">
         </div>
         <br>
         <div class="">
             <label for="">C</label>
-            <input type="text" name="" id="nilai-c" value="0">
+            <input type="text" name="" id="nilai-c" value="26">
         </div>
         <br>
         <div class="">
             <label for="">A n B</label>
-            <input type="text" name="" id="nilai-anb" value="0">
+            <input type="text" name="" id="nilai-anb" value="11">
         </div>
         <br>
         <div class="">
             <label for="">A n C</label>
-            <input type="text" name="" id="nilai-anc" value="0">
+            <input type="text" name="" id="nilai-anc" value="9">
         </div>
         <br>
         <div class="">
             <label for="">B n C</label>
-            <input type="text" name="" id="nilai-bnc" value="0">
+            <input type="text" name="" id="nilai-bnc" value="8">
         </div>
         <br>
         <div class="">
@@ -544,7 +544,7 @@
         <br>
         <div class="">
             <label for="">Tidak Menyukai Semua</label>
-            <input type="text" name="" id="nilai-tidak-menyukai-3" value="0">
+            <input type="text" name="" id="nilai-tidak-menyukai-3" value="8">
         </div>
         <br>
         <button type="button" id="submit" onclick="submit()">submit</button>
@@ -643,7 +643,15 @@ A
                 let nilai_semua_yang_didapat = 0
 
                 if(nilai_anbnc < 1){
-                    nilai_anbnc = semesta - nilai_tidak_menyukai_3
+                    let a_saja = nilai_a - (nilai_anb + nilai_anc)
+                    let b_saja = nilai_b - (nilai_anb + nilai_bnc)
+                    let c_saja = nilai_c - (nilai_anc + nilai_bnc)
+                    nilai_anbnc = semesta - (a_saja + b_saja + c_saja + nilai_anb + nilai_anc + nilai_bnc + nilai_tidak_menyukai_3)
+
+                    console.log(`${semesta} = (${a_saja} + x) + (${nilai_anb} - x) + (${b_saja} + x) + (${nilai_anc} - x) + (x) + (${nilai_bnc} - x) + (${c_saja} + x) + ${nilai_tidak_menyukai_3}`)
+
+                    console.log(`${semesta} = ${semesta - nilai_anbnc} + x`)
+                    console.log(`x = ${nilai_anbnc}`)
                 }
 
                 nilai_anb = nilai_anb - nilai_anbnc

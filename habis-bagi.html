@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <label for="">dari</label>
+            <input type="text" name="" id="dari">
+        </div>
+        <br>
+        <div>
+            <label for="">sampai</label>
+            <input type="text" name="" id="sampai">
+        </div>
+        <br>
+        <div>
+            <label for="">dibagi</label>
+            <input type="text" name="" id="dibagi">
+        </div>
+        <br>
+        <select name="" id="operator">
+            <option value="habis">Habis Dibagi</option>
+            <option value="tidak_habis">Tidak Habis Dibagi</option>
+        </select>
+        <br>
+        <br>
+        <button type="button" onclick="submit()">submit</button>
+
+        <script>
+            function submit(){
+                console.clear()
+                let kumpulan_yang_bisa_dibagi = []
+                let dari = parseInt(document.querySelector('#dari').value)
+                let sampai = parseInt(document.querySelector('#sampai').value)
+                let dibagi = parseInt(document.querySelector('#dibagi').value)
+                let operator = document.querySelector('#operator').value
+                operator = operator == 'habis' ? '==' : '>'
+                for(let i = dari; i <= sampai; i++){
+                    eval(`${i} % ${dibagi} ${operator} 0`) ? kumpulan_yang_bisa_dibagi.push(i) : ''
+                }
+
+                console.log(`[${kumpulan_yang_bisa_dibagi.join(', ')}]`);
+            }
+        </script>
+    </div>
+</body>
+</html>
